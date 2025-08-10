@@ -1,0 +1,316 @@
+{
+  "pronouns": ["yo", "tú", "él/ella/usted", "nosotros/nosotras", "ellos/ellas/ustedes"],
+  "tenses": ["presente", "preterito", "imperfecto", "futuro", "condicional", "perfecto"],
+  "tenseExplanations": {
+    "presente": "Used for actions happening now, habitual actions, and general truths.",
+    "preterito": "Used for completed actions at a specific time in the past.",
+    "imperfecto": "Used for ongoing, habitual, or descriptive actions in the past.",
+    "futuro": "Used for actions that will happen in the future.",
+    "condicional": "Used for hypothetical actions or things that 'would' happen.",
+    "perfecto": "Used for actions that have happened recently or have a connection to the present."
+  },
+  "tensesExamples": {
+    "presente": {
+      "spanish": "Ella habla español.",
+      "english": "She speaks Spanish."
+    },
+    "preterito": {
+      "spanish": "Él habló con su amigo ayer.",
+      "english": "He spoke with his friend yesterday."
+    },
+    "imperfecto": {
+      "spanish": "Yo hablaba mucho cuando era niño.",
+      "english": "I used to speak a lot when I was a child."
+    },
+    "futuro": {
+      "spanish": "Nosotros hablaremos mañana.",
+      "english": "We will speak tomorrow."
+    },
+    "condicional": {
+      "spanish": "Ustedes hablarían si tuvieran tiempo.",
+      "english": "You all would speak if you had time."
+    },
+    "perfecto": {
+      "spanish": "Yo he hablado con mi jefe.",
+      "english": "I have spoken with my boss."
+    }
+  },
+  "maxQuestions": 10,
+  "verbs": [
+    {
+      "infinitive": "hablar",
+      "conjugations": {
+        "presente": ["hablo", "hablas", "habla", "hablamos", "hablan"],
+        "preterito": ["hablé", "hablaste", "habló", "hablamos", "hablaron"],
+        "imperfecto": ["hablaba", "hablabas", "hablaba", "hablábamos", "hablaban"],
+        "futuro": ["hablaré", "hablarás", "hablará", "hablaremos", "hablarán"],
+        "condicional": ["hablaría", "hablarías", "hablaría", "hablaríamos", "hablarían"],
+        "perfecto": ["he hablado", "has hablado", "ha hablado", "hemos hablado", "han hablado"]
+      }
+    },
+    {
+      "infinitive": "comer",
+      "conjugations": {
+        "presente": ["como", "comes", "come", "comemos", "comen"],
+        "preterito": ["comí", "comiste", "comió", "comimos", "comieron"],
+        "imperfecto": ["comía", "comías", "comía", "comíamos", "comían"],
+        "futuro": ["comeré", "comerás", "comerá", "comeremos", "comerán"],
+        "condicional": ["comería", "comerías", "comería", "comeríamos", "comían"],
+        "perfecto": ["he comido", "has comido", "ha comido", "hemos comido", "han comido"]
+      }
+    },
+    {
+      "infinitive": "vivir",
+      "conjugations": {
+        "presente": ["vivo", "vives", "vive", "vivimos", "viven"],
+        "preterito": ["viví", "viviste", "vivió", "vivimos", "vivieron"],
+        "imperfecto": ["vivía", "vivías", "vivía", "vivíamos", "vivían"],
+        "futuro": ["viviré", "vivirás", "vivirá", "viviremos", "vivirán"],
+        "condicional": ["viviría", "vivirías", "viviría", "viviríamos", "vivirían"],
+        "perfecto": ["he vivido", "has vivido", "ha vivido", "hemos vivido", "han vivido"]
+      }
+    },
+    {
+      "infinitive": "estar",
+      "conjugations": {
+        "presente": ["estoy", "estás", "está", "estamos", "están"],
+        "preterito": ["estuve", "estuviste", "estuvo", "estuvimos", "estuvieron"],
+        "imperfecto": ["estaba", "estabas", "estaba", "estábamos", "estaban"],
+        "futuro": ["estaré", "estarás", "estará", "estaremos", "estarán"],
+        "condicional": ["estaría", "estarías", "estaría", "estaríamos", "estarían"],
+        "perfecto": ["he estado", "has estado", "ha estado", "hemos estado", "han estado"]
+      }
+    },
+    {
+      "infinitive": "ser",
+      "conjugations": {
+        "presente": ["soy", "eres", "es", "somos", "son"],
+        "preterito": ["fui", "fuiste", "fue", "fuimos", "fueron"],
+        "imperfecto": ["era", "eras", "era", "éramos", "eran"],
+        "futuro": ["seré", "serás", "será", "seremos", "serán"],
+        "condicional": ["sería", "serías", "sería", "seríamos", "serían"],
+        "perfecto": ["he sido", "has sido", "ha sido", "hemos sido", "han sido"]
+      }
+    },
+    {
+      "infinitive": "tener",
+      "conjugations": {
+        "presente": ["tengo", "tienes", "tiene", "tenemos", "tienen"],
+        "preterito": ["tuve", "tuviste", "tuvo", "tuvimos", "tuvieron"],
+        "imperfecto": ["tenía", "tenías", "tenía", "teníamos", "tenían"],
+        "futuro": ["tendré", "tendrás", "tendrá", "tendremos", "tendrán"],
+        "condicional": ["tendría", "tendrías", "tendría", "tendríamos", "tendrían"],
+        "perfecto": ["he tenido", "has tenido", "ha tenido", "hemos tenido", "han tenido"]
+      }
+    },
+    {
+      "infinitive": "hacer",
+      "conjugations": {
+        "presente": ["hago", "haces", "hace", "hacemos", "hacen"],
+        "preterito": ["hice", "hiciste", "hizo", "hicimos", "hicieron"],
+        "imperfecto": ["hacía", "hacías", "hacía", "hacíamos", "hacían"],
+        "futuro": ["haré", "harás", "hará", "haremos", "harán"],
+        "condicional": ["haría", "harías", "haría", "haríamos", "harían"],
+        "perfecto": ["he hecho", "has hecho", "ha hecho", "hemos hecho", "han hecho"]
+      }
+    },
+    {
+      "infinitive": "ir",
+      "conjugations": {
+        "presente": ["voy", "vas", "va", "vamos", "van"],
+        "preterito": ["fui", "fuiste", "fue", "fuimos", "fueron"],
+        "imperfecto": ["iba", "ibas", "iba", "íbamos", "iban"],
+        "futuro": ["iré", "irás", "irá", "iremos", "irán"],
+        "condicional": ["iría", "irías", "iría", "iríamos", "irían"],
+        "perfecto": ["he ido", "has ido", "ha ido", "hemos ido", "han ido"]
+      }
+    },
+    {
+      "infinitive": "poder",
+      "conjugations": {
+        "presente": ["puedo", "puedes", "puede", "podemos", "pueden"],
+        "preterito": ["pude", "pudiste", "pudo", "pudimos", "pudieron"],
+        "imperfecto": ["podía", "podías", "podía", "podíamos", "podían"],
+        "futuro": ["podré", "podrás", "podrá", "podremos", "podrán"],
+        "condicional": ["podría", "podrías", "podría", "podríamos", "podrían"],
+        "perfecto": ["he podido", "has podido", "ha podido", "hemos podido", "han podido"]
+      }
+    },
+    {
+      "infinitive": "ver",
+      "conjugations": {
+        "presente": ["veo", "ves", "ve", "vemos", "ven"],
+        "preterito": ["vi", "viste", "vio", "vimos", "vieron"],
+        "imperfecto": ["veía", "veías", "veía", "veíamos", "veían"],
+        "futuro": ["veré", "verás", "verá", "veremos", "verán"],
+        "condicional": ["vería", "verías", "vería", "veríamos", "verían"],
+        "perfecto": ["he visto", "has visto", "ha visto", "hemos visto", "han visto"]
+      }
+    },
+    {
+      "infinitive": "dar",
+      "conjugations": {
+        "presente": ["doy", "das", "da", "damos", "dan"],
+        "preterito": ["di", "diste", "dio", "dimos", "dieron"],
+        "imperfecto": ["daba", "dabas", "daba", "dábamos", "daban"],
+        "futuro": ["daré", "darás", "dará", "daremos", "darán"],
+        "condicional": ["daría", "darías", "daría", "daríamos", "darían"],
+        "perfecto": ["he dado", "has dado", "ha dado", "hemos dado", "han dado"]
+      }
+    },
+    {
+      "infinitive": "saber",
+      "conjugations": {
+        "presente": ["sé", "sabes", "sabe", "sabemos", "saben"],
+        "preterito": ["supe", "supiste", "supo", "supimos", "supieron"],
+        "imperfecto": ["sabía", "sabías", "sabía", "sabíamos", "sabían"],
+        "futuro": ["sabré", "sabrás", "sabrá", "sabremos", "sabrán"],
+        "condicional": ["sabría", "sabrías", "sabría", "sabríamos", "sabrían"],
+        "perfecto": ["he sabido", "has sabido", "ha sabido", "hemos sabido", "han sabido"]
+      }
+    },
+    {
+      "infinitive": "querer",
+      "conjugations": {
+        "presente": ["quiero", "quieres", "quiere", "queremos", "quieren"],
+        "preterito": ["quise", "quisiste", "quiso", "quisimos", "quisieron"],
+        "imperfecto": ["quería", "querías", "quería", "queríamos", "querían"],
+        "futuro": ["querré", "querrás", "querrá", "querremos", "querrán"],
+        "condicional": ["querría", "querrías", "querría", "querríamos", "querrían"],
+        "perfecto": ["he querido", "has querido", "ha querido", "hemos querido", "han querido"]
+      }
+    },
+    {
+      "infinitive": "llegar",
+      "conjugations": {
+        "presente": ["llego", "llegas", "llega", "llegamos", "llegan"],
+        "preterito": ["llegué", "llegaste", "llegó", "llegamos", "llegaron"],
+        "imperfecto": ["llegaba", "llegabas", "llegaba", "llegábamos", "llegaban"],
+        "futuro": ["llegaré", "llegarás", "llegará", "llegaremos", "llegarán"],
+        "condicional": ["llegaría", "llegarías", "llegaría", "llegaríamos", "llegarían"],
+        "perfecto": ["he llegado", "has llegado", "ha llegado", "hemos llegado", "han llegado"]
+      }
+    },
+    {
+      "infinitive": "poner",
+      "conjugations": {
+        "presente": ["pongo", "pones", "pone", "ponemos", "ponen"],
+        "preterito": ["puse", "pusiste", "puso", "pusimos", "pusieron"],
+        "imperfecto": ["ponía", "ponías", "ponía", "poníamos", "ponían"],
+        "futuro": ["pondré", "pondrás", "pondrá", "pondremos", "pondrán"],
+        "condicional": ["pondría", "pondrías", "pondría", "pondríamos", "pondrían"],
+        "perfecto": ["he puesto", "has puesto", "ha puesto", "hemos puesto", "han puesto"]
+      }
+    },
+    {
+      "infinitive": "decir",
+      "conjugations": {
+        "presente": ["digo", "dices", "dice", "decimos", "dicen"],
+        "preterito": ["dije", "dijiste", "dijo", "dijimos", "dijeron"],
+        "imperfecto": ["decía", "decías", "decía", "decíamos", "decían"],
+        "futuro": ["diré", "dirás", "dirá", "diremos", "dirán"],
+        "condicional": ["diría", "dirías", "diría", "diríamos", "dirían"],
+        "perfecto": ["he dicho", "has dicho", "ha dicho", "hemos dicho", "han dicho"]
+      }
+    },
+    {
+      "infinitive": "salir",
+      "conjugations": {
+        "presente": ["salgo", "sales", "sale", "salimos", "salen"],
+        "preterito": ["salí", "saliste", "salió", "salimos", "salieron"],
+        "imperfecto": ["salía", "salías", "salía", "salíamos", "salían"],
+        "futuro": ["saldré", "saldrás", "saldrá", "saldremos", "saldrán"],
+        "condicional": ["saldría", "saldrías", "saldría", "saldríamos", "saldrían"],
+        "perfecto": ["he salido", "has salido", "ha salido", "hemos salido", "han salido"]
+      }
+    },
+    {
+      "infinitive": "venir",
+      "conjugations": {
+        "presente": ["vengo", "vienes", "viene", "venimos", "vienen"],
+        "preterito": ["vine", "viniste", "vino", "vinimos", "vinieron"],
+        "imperfecto": ["venía", "venías", "venía", "veníamos", "venían"],
+        "futuro": ["vendré", "vendrás", "vendrá", "vendremos", "vendrán"],
+        "condicional": ["vendría", "vendrías", "vendría", "vendríamos", "vendrían"],
+        "perfecto": ["he venido", "has venido", "ha venido", "hemos venido", "han venido"]
+      }
+    },
+    {
+      "infinitive": "pensar",
+      "conjugations": {
+        "presente": ["pienso", "piensas", "piensa", "pensamos", "piensan"],
+        "preterito": ["pensé", "pensaste", "pensó", "pensamos", "pensaron"],
+        "imperfecto": ["pensaba", "pensabas", "pensaba", "pensábamos", "pensaban"],
+        "futuro": ["pensaré", "pensarás", "pensará", "pensaremos", "pensarán"],
+        "condicional": ["pensaría", "pensarías", "pensaría", "pensaríamos", "pensarían"],
+        "perfecto": ["he pensado", "has pensado", "ha pensado", "hemos pensado", "han pensado"]
+      }
+    },
+    {
+      "infinitive": "tomar",
+      "conjugations": {
+        "presente": ["tomo", "tomas", "toma", "tomamos", "toman"],
+        "preterito": ["tomé", "tomaste", "tomó", "tomamos", "tomaron"],
+        "imperfecto": ["tomaba", "tomabas", "tomaba", "tomábamos", "tomaban"],
+        "futuro": ["tomaré", "tomarás", "tomará", "tomaremos", "tomarán"],
+        "condicional": ["tomaría", "tomarías", "tomaría", "tomaríamos", "tomarían"],
+        "perfecto": ["he tomado", "has tomado", "ha tomado", "hemos tomado", "han tomado"]
+      }
+    },
+    {
+      "infinitive": "creer",
+      "conjugations": {
+        "presente": ["creo", "crees", "cree", "creemos", "creen"],
+        "preterito": ["creí", "creíste", "creyó", "creímos", "creyeron"],
+        "imperfecto": ["creía", "creías", "creía", "creíamos", "creían"],
+        "futuro": ["creeré", "creerás", "creerá", "creeremos", "creerán"],
+        "condicional": ["creería", "creerías", "creería", "creeríamos", "creerían"],
+        "perfecto": ["he creído", "has creído", "ha creído", "hemos creído", "han creído"]
+      }
+    },
+    {
+      "infinitive": "llevar",
+      "conjugations": {
+        "presente": ["llevo", "llevas", "lleva", "llevamos", "llevan"],
+        "preterito": ["llevé", "llevaste", "llevó", "llevamos", "llevaron"],
+        "imperfecto": ["llevaba", "llevabas", "llevaba", "llevábamos", "llevaban"],
+        "futuro": ["llevaré", "llevarás", "llevará", "llevaremos", "llevarán"],
+        "condicional": ["llevaría", "llevarías", "llevaría", "llevaríamos", "llevarían"],
+        "perfecto": ["he llevado", "has llevado", "ha llevado", "hemos llevado", "han llevado"]
+      }
+    },
+    {
+      "infinitive": "encontrar",
+      "conjugations": {
+        "presente": ["encuentro", "encuentras", "encuentra", "encontramos", "encuentran"],
+        "preterito": ["encontré", "encontraste", "encontró", "encontramos", "encontraron"],
+        "imperfecto": ["encontraba", "encontrabas", "encontraba", "encontrábamos", "encontraban"],
+        "futuro": ["encontraré", "encontrarás", "encontrará", "encontraremos", "encontrarán"],
+        "condicional": ["encontraría", "encontrarías", "encontraría", "encontraríamos", "encontrarían"],
+        "perfecto": ["he encontrado", "has encontrado", "ha encontrado", "hemos encontrado", "han encontrado"]
+      }
+    },
+    {
+      "infinitive": "deber",
+      "conjugations": {
+        "presente": ["debo", "debes", "debe", "debemos", "deben"],
+        "preterito": ["debí", "debiste", "debió", "debimos", "debieron"],
+        "imperfecto": ["debía", "debías", "debía", "debíamos", "debían"],
+        "futuro": ["deberé", "deberás", "deberá", "deberemos", "deberán"],
+        "condicional": ["debería", "deberías", "debería", "deberíamos", "deberían"],
+        "perfecto": ["he debido", "has debido", "ha debido", "hemos debido", "han debido"]
+      }
+    },
+    {
+      "infinitive": "trabajar",
+      "conjugations": {
+        "presente": ["trabajo", "trabajas", "trabaja", "trabajamos", "trabajan"],
+        "preterito": ["trabajé", "trabajaste", "trabajó", "trabajamos", "trabajaron"],
+        "imperfecto": ["trabajaba", "trabajabas", "trabajaba", "trabajábamos", "trabajaban"],
+        "futuro": ["trabajaré", "trabajarás", "trabajará", "trabajaremos", "trabajarán"],
+        "condicional": ["trabajaría", "trabajarías", "trabajaría", "trabajaríamos", "trabajarían"],
+        "perfecto": ["he trabajado", "has trabajado", "ha trabajado", "hemos trabajado", "han trabajado"]
+      }
+    }
+  ]
+}

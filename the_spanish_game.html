@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Verb Conjugation Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+        }
+        .game-container {
+            border: 2px solid #4a5568;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #2d3748;
+        }
+        .btn {
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        #result-message {
+            transition: color 0.5s ease;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="game-container w-full max-w-lg p-8 mx-auto rounded-xl text-white text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-gray-100">Spanish Verb Trainer</h1>
+
+        <div class="mb-8">
+            <p class="text-xl sm:text-2xl font-semibold mb-2" id="verb-infinitive">Loading...</p>
+            <p class="text-lg sm:text-xl text-gray-300 mb-2">
+                Tense: <span class="font-bold text-yellow-300" id="verb-tense"></span>
+            </p>
+            <p class="text-sm text-gray-400 mb-2 italic" id="tense-explanation"></p>
+            <p class="text-lg sm:text-xl text-gray-300">
+                Pronoun: <span class="font-bold text-green-300" id="verb-pronoun"></span>
+            </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <input type="text" id="answer-input" class="flex-1 w-full sm:w-auto p-3 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your answer">
+            <button id="submit-btn" class="btn w-full sm:w-auto px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700">Submit</button>
+        </div>
+
+        <div class="flex flex-col items-center gap-2 mb-4">
+            <button id="example-btn" class="btn px-4 py-2 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 text-sm">Show Example</button>
+            <div id="example-container" class="mt-2 text-left p-3 rounded-lg bg-gray-700 hidden">
+                <p id="example-spanish" class="text-base text-gray-100 italic"></p>
+                <p id="example-english" class="text-sm text-gray-400"></p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <p id="result-message" class="text-lg font-bold min-h-[1.5em]"></p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-lg font-semibold text-gray-200">
+                Score: <span id="score">0</span> / <span id="total-questions">0</span>
+            </p>
+            <button id="next-btn" class="btn px-6 py-3 bg-gray-500 text-white font-bold rounded-lg hover:bg-gray-600 hidden">Next</button>
+            <button id="start-btn" class="btn px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 hidden">Start New Game</button>
+        </div>
+
+    </div>
+
+    <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Helper function to remove diacritical marks and all whitespace from a string
+        function normalizeString(str) {
+            if (!str) return '';
+            return str.normalize("NFD").replace(/[\u0300-\u036f\s]/g, "").toLowerCase();
+        }
+
+        // DOM elements
+        const verbInfinitiveEl = document.getElementById('verb-infinitive');
+        const verbTenseEl = document.getElementById('verb-tense');
+        const verbPronounEl = document.getElementById('verb-pronoun');
+        const tenseExplanationEl = document.getElementById('tense-explanation');
+        const answerInput = document.getElementById('answer-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const startBtn = document.getElementById('start-btn');
+        const resultMessageEl = document.getElementById('result-message');
+        const scoreEl = document.getElementById('score');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const exampleBtn = document.getElementById('example-btn');
+        const exampleContainer = document.getElementById('example-container');
+        const exampleSpanishEl = document.getElementById('example-spanish');
+        const exampleEnglishEl = document.getElementById('example-english');
+
+        let data;
+        try {
+            const res = await fetch('questions.json', { cache: 'no-store' });
+            if (!res.ok) throw new Error('Failed to load questions.json');
+            data = await res.json();
+        } catch (e) {
+            verbInfinitiveEl.textContent = 'Could not load questions.json';
+            console.error(e);
+            return;
+        }
+
+        const verbs = data.verbs;
+        const pronouns = data.pronouns;
+        const tenses = data.tenses;
+        const tenseExplanations = data.tenseExplanations;
+        const tensesExamples = data.tensesExamples;
+        const maxQuestions = data.maxQuestions ?? 10;
+
+        // --- Game State ---
+        let score = 0;
+        let currentQuestion = 0;
+        let currentAnswer = "";
+        let timerId = null;
+
+        // --- Game Functions ---
+        function startGame() {
+            score = 0;
+            currentQuestion = 0;
+            scoreEl.textContent = score;
+            totalQuestionsEl.textContent = currentQuestion; // Sets the total questions to 0
+            startBtn.classList.add('hidden');
+            submitBtn.classList.remove('hidden');
+            nextBtn.classList.add('hidden');
+            resultMessageEl.textContent = '';
+            generateQuestion();
+        }
+
+        function generateQuestion() {
+            // Clear previous state and UI
+            clearTimeout(timerId);
+            answerInput.value = '';
+            answerInput.disabled = false;
+            submitBtn.disabled = false;
+            nextBtn.classList.add('hidden');
+            resultMessageEl.textContent = '';
+            exampleBtn.classList.remove('hidden'); // Show the example button
+            exampleBtn.disabled = false;
+            exampleContainer.classList.add('hidden');
+
+            // Before generating a new question, check if the game is over
+            if (currentQuestion >= maxQuestions) {
+                showFinalResults();
+                return;
+            }
+
+            currentQuestion++; // Increment the question number at the beginning of each question
+
+            // Update the score display with the current question number
+            scoreEl.textContent = score;
+            totalQuestionsEl.textContent = currentQuestion;
+
+            // Randomly select verb, tense, and pronoun
+            const randomVerb = verbs[Math.floor(Math.random() * verbs.length)];
+            const randomTense = tenses[Math.floor(Math.random() * tenses.length)];
+            const randomPronounIndex = Math.floor(Math.random() * pronouns.length);
+            const randomPronoun = pronouns[randomPronounIndex];
+
+            // Set the current correct answer
+            currentAnswer = randomVerb.conjugations[randomTense][randomPronounIndex];
+
+            // Update the UI
+            verbInfinitiveEl.textContent = randomVerb.infinitive;
+            verbTenseEl.textContent = randomTense;
+            tenseExplanationEl.textContent = tenseExplanations[randomTense];
+            verbPronounEl.textContent = randomPronoun;
+        }
+
+        function checkAnswer() {
+            // Normalize both the user's input and the correct answer
+            const userAnswerNormalized = normalizeString(answerInput.value);
+            const correctAnswerNormalized = normalizeString(currentAnswer);
+
+            answerInput.disabled = true;
+            submitBtn.disabled = true;
+            exampleBtn.disabled = true; // Disable example button after submitting
+
+            if (userAnswerNormalized === correctAnswerNormalized) {
+                resultMessageEl.textContent = "Correct!";
+                resultMessageEl.style.color = '#34d399'; // Green
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                resultMessageEl.textContent = `Incorrect. The correct answer is: ${currentAnswer}`;
+                resultMessageEl.style.color = '#f87171'; // Red
+            }
+
+            // Show the next button
+            nextBtn.classList.remove('hidden');
+        }
+
+        function showFinalResults() {
+            verbInfinitiveEl.textContent = `Game Over!`;
+            verbTenseEl.textContent = '';
+            verbPronounEl.textContent = '';
+            tenseExplanationEl.textContent = '';
+            answerInput.value = '';
+            answerInput.disabled = true;
+            submitBtn.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+            exampleBtn.classList.add('hidden');
+            exampleContainer.classList.add('hidden');
+            resultMessageEl.textContent = `You scored ${score} out of ${maxQuestions}!`;
+            resultMessageEl.style.color = '#fff';
+            startBtn.classList.remove('hidden');
+            totalQuestionsEl.textContent = maxQuestions; // Ensure the total is 10 at the end
+        }
+
+        // --- Event Listeners ---
+        submitBtn.addEventListener('click', checkAnswer);
+        answerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !submitBtn.disabled) {
+                checkAnswer();
+            }
+        });
+        nextBtn.addEventListener('click', generateQuestion);
+        startBtn.addEventListener('click', startGame);
+
+        // New event listener for the example button
+        exampleBtn.addEventListener('click', () => {
+            const currentTense = verbTenseEl.textContent;
+
+            // Check if there is an example for the current tense
+            if (tensesExamples && tensesExamples[currentTense]) {
+                const example = tensesExamples[currentTense];
+                exampleSpanishEl.textContent = example.spanish;
+                exampleEnglishEl.textContent = example.english;
+
+                // Show the container and hide the button
+                exampleContainer.classList.remove('hidden');
+                exampleBtn.classList.add('hidden');
+            }
+        });
+
+        // Initial call to start the game
+        startGame();
+    });
+    </script>
+</body>
+</html>
